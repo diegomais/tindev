@@ -1,4 +1,4 @@
-const app = require('./app');
+import app from './app';
 
 /** Create a constant reference to port declared on environment variables
  * or set the port of remote server to 3333.  */
