@@ -7,7 +7,9 @@ class UserController {
 
     // If email already exists in database return error message
     if (userExists) {
-      return res.status(400).json({ error: 'This email already exists' });
+      return res
+        .status(400)
+        .json({ error: 'An account already exists with this email address.' });
     }
 
     // Else create user in database
