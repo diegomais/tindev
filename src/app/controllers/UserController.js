@@ -1,7 +1,27 @@
+import * as yup from 'yup';
+
 import User from '../models/User';
 
 class UserController {
   async store(req, res) {
+    // Create a object schema validator and object parser using Yup
+    const schema = yup.object().shape({
+      name: yup.string().required(),
+      email: yup
+        .string()
+        .email()
+        .required(),
+      password: yup
+        .string()
+        .required()
+        .min(6),
+    });
+
+    // Check validity
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Invalid parameters.' });
+    }
+
     // Check if email already exists in user database
     const userExists = await User.findOne({ where: { email: req.body.email } });
 
@@ -20,6 +40,23 @@ class UserController {
   }
 
   async update(req, res) {
+    // Create a object schema validator and object parser using Yup
+    const schema = yup.object().shape({
+      name: yup.string(),
+      email: yup.string().email(),
+      oldPassword: yup.string().min(6),
+      password: yup
+        .string()
+        .min(6)
+        .when('oldPassword', (oldPassword, field) =>
+          oldPassword ? field.required() : field
+        ),
+    });
+
+    // Check validity
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Invalid parameters.' });
+    }
     const user = await User.findByPk(req.userId);
 
     const { email, oldPassword } = req.body;
