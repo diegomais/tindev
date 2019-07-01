@@ -1,1 +1,9 @@
+# Dependency directory
 node_modules
+
+# Ignore .env configuration files
+.env
+
+# Ignore files inside uploads folder
+tmp/uploads/*
+!tmp/uploads/.gitkeep
