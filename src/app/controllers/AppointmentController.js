@@ -45,6 +45,14 @@ class AppointmentController {
 
     const { date, provider_id } = req.body;
 
+    // Check provider must be different from authenticated user
+    if (provider_id === req.userId) {
+      return res.status(400).json({
+        error:
+          'Provider must be different from user. Please, check and try again.',
+      });
+    }
+
     // Check if provider_id belongs to a provider
     const checkIsProvider = await User.findOne({
       where: { id: provider_id, provider: true },
