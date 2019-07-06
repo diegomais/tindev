@@ -6,6 +6,8 @@ import Appointment from '../models/Appointment';
 import File from '../models/File';
 import Notification from '../schemas/Notification';
 
+import Mail from '../../lib/Mail';
+
 class AppointmentController {
   async index(req, res) {
     const { page = 1 } = req.query;
@@ -103,7 +105,12 @@ class AppointmentController {
 
   async delete(req, res) {
     // Get appointment from db
-    const appointment = await Appointment.findByPk(req.params.id);
+    const appointment = await Appointment.findByPk(req.params.id, {
+      include: [
+        { model: User, as: 'provider', attributes: ['name', 'email'] },
+        { model: User, as: 'user', attributes: ['name'] },
+      ],
+    });
 
     // Check authenticated user differ from user of appointment
     if (appointment.user_id !== req.userId) {
@@ -127,6 +134,18 @@ class AppointmentController {
 
     // Save changes in db
     await appointment.save();
+
+    // Send email to provider
+    await Mail.sendMail({
+      to: `${appointment.provider.name} <${appointment.provider.email}>`,
+      subject: 'Appointment canceled',
+      template: 'cancellation',
+      context: {
+        provider: appointment.provider.name,
+        user: appointment.user.name,
+        date: format(appointment.date, "dd.MM.yy' at 'HH:mm"),
+      },
+    });
 
     return res.json(appointment);
   }
