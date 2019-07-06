@@ -106,7 +106,10 @@ class AppointmentController {
   async delete(req, res) {
     // Get appointment from db
     const appointment = await Appointment.findByPk(req.params.id, {
-      include: [{ model: User, as: 'provider', attributes: ['name', 'email'] }],
+      include: [
+        { model: User, as: 'provider', attributes: ['name', 'email'] },
+        { model: User, as: 'user', attributes: ['name'] },
+      ],
     });
 
     // Check authenticated user differ from user of appointment
@@ -136,7 +139,12 @@ class AppointmentController {
     await Mail.sendMail({
       to: `${appointment.provider.name} <${appointment.provider.email}>`,
       subject: 'Appointment canceled',
-      text: 'You have a new cancellation.',
+      template: 'cancellation',
+      context: {
+        provider: appointment.provider.name,
+        user: appointment.user.name,
+        date: format(appointment.date, "dd.MM.yy' at 'HH:mm"),
+      },
     });
 
     return res.json(appointment);
