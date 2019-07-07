@@ -1,12 +1,13 @@
 import * as Yup from 'yup';
 import { format, isBefore, parseISO, startOfHour, subHours } from 'date-fns';
 
+import Queue from '../../lib/Queue';
+import CancellationMail from '../jobs/CancellationMail';
+
 import User from '../models/User';
 import Appointment from '../models/Appointment';
 import File from '../models/File';
 import Notification from '../schemas/Notification';
-
-import Mail from '../../lib/Mail';
 
 class AppointmentController {
   async index(req, res) {
@@ -135,17 +136,8 @@ class AppointmentController {
     // Save changes in db
     await appointment.save();
 
-    // Send email to provider
-    await Mail.sendMail({
-      to: `${appointment.provider.name} <${appointment.provider.email}>`,
-      subject: 'Appointment canceled',
-      template: 'cancellation',
-      context: {
-        provider: appointment.provider.name,
-        user: appointment.user.name,
-        date: format(appointment.date, "dd.MM.yy' at 'HH:mm"),
-      },
-    });
+    // Add job
+    await Queue.add(CancellationMail.key, { appointment });
 
     return res.json(appointment);
   }
