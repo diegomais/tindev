@@ -15,7 +15,19 @@ const DevSchema = new Schema(
       required: true,
     },
     bio: String,
-},
+    likes: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Dev',
+      },
+    ],
+    dislikes: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Dev',
+      },
+    ],
+  },
   { timestamps: true }
 );
 
