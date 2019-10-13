@@ -64,3 +64,10 @@
   transform: translateY(-5px);
   transition: all 0.2s;
 }
+
+.main-container .empty {
+  margin-top: 300px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #999;
+}
