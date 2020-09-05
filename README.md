@@ -58,7 +58,7 @@ You can obtain the project by running the instruction bellow on your terminal:
 
 #### Installing dependencies and running the server
 
-Run the instructions bellow inside `backend` directory:
+Run the instructions bellow inside `packages/api` directory:
 
 1. `npm install`
 2. `npm run dev`
@@ -72,7 +72,7 @@ or
 
 #### Installing dependencies and running the web application
 
-Run the instructions bellow inside `frontend` directory:
+Run the instructions bellow inside `packages/web` directory:
 
 1. `npm install`
 2. `npm start`
