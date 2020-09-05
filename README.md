@@ -84,6 +84,8 @@ or
 
 ### Web
 
+Web application available at [https://diegomais-tindev.netlify.app](https://diegomais-tindev.netlify.app).
+
 #### Adding environment variables
 
 1. Rename the file `.env.example` on `packages/web` directory to `.env`.
@@ -100,6 +102,31 @@ or
 
 1. `yarn install`
 2. `yarn start`
+
+### Mobile
+
+With an Android phone, you can load this project immediately at [https://expo.io/@diegomais/tindev](https://expo.io/@diegomais/tindev).
+
+#### Setting up the development environment
+
+Follow the instructions for Expo CLI available in the official [React Native Documentation](https://reactnative.dev/docs/environment-setup).
+
+#### Adding environment variables
+
+1. Rename the file `environment.example.js` on `packages/mobile` directory to `environment.js`.
+2. Add the API URL (e.g. `http://localhost:3333`) into `.env` file.
+
+#### Installing dependencies and running the mobile application
+
+Run the instructions bellow inside `packages/mobile` directory:
+
+1. `npm install`
+2. `expo start`
+
+or
+
+1. `yarn install`
+2. `expo start`
 
 ## :thinking: How to contribute
 
