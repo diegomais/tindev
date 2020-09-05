@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "pm2 start ecosystem.config.js",
+    "start": "pm2-runtime start ecosystem.config.js --env production",
     "dev": "nodemon src/server.js"
   },
   "dependencies": {
