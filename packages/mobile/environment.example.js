@@ -1,11 +1,12 @@
 import Constants from 'expo-constants';
 
+const apiUrl = '';
 const sentryDsn = '';
 
 const ENV = {
-  dev: { sentryDsn },
-  staging: { sentryDsn },
-  prod: { sentryDsn },
+  dev: { apiUrl, sentryDsn },
+  staging: { apiUrl, sentryDsn },
+  prod: { apiUrl, sentryDsn },
 };
 
 const getEnvironmentVariables = (env = Constants.manifest.releaseChannel) => {
