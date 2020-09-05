@@ -29,7 +29,6 @@ Extras:
 - Main Libs
   - [Express](https://expressjs.com)
   - [Mongoose ODM](https://mongoosejs.com)
-  - [styled-components](https://styled-components.com)
 - Style
   - [EditorConfig](https://editorconfig.org)
   - [ESLint](https://eslint.org)
@@ -48,13 +47,28 @@ The project can be built with npm or Yarn, so choose one of the approach bellow 
 - **npm** is distributed with Node.js which means that when you download Node.js, you automatically get npm installed on your computer. [Download Node.js](https://nodejs.org/en/download/).
 - **Yarn** is a package manager built by Facebook Team and seems to be faster than npm in general. [Download Yarn](https://yarnpkg.com/en/docs/install).
 
-#### Cloning the project
+### Cloning the project
 
 You can obtain the project by running the instruction bellow on your terminal:
 
 `git clone https://github.com/diegomais/tindev.git`
 
+#### Setting up the database
+
+The project uses [MongoDB](https://www.mongodb.com).
+
+We recommend use [Docker](https://www.docker.com) to install and run the database above.
+
+1. Install [Docker Desktop](https://www.docker.com/get-started).
+2. Start a MongoDB instance:
+   `docker run --name tindev-mongo -p 27017:27107 -d mongo`
+
 ### API
+
+#### Adding environment variables
+
+1. Rename the file `.env.example` on `packages/api` directory to `.env`.
+2. Add the MongoDB URI (e.g. `mongodb://localhost:27017/tindev`) into `.env` file.
 
 #### Installing dependencies and running the server
 
@@ -69,6 +83,11 @@ or
 2. `yarn dev`
 
 ### Web
+
+#### Adding environment variables
+
+1. Rename the file `.env.example` on `packages/web` directory to `.env`.
+2. Add the API URL (e.g. `http://localhost:3333`) into `.env` file.
 
 #### Installing dependencies and running the web application
 
