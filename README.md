@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="Tindev" src="./frontend/src/assets/logo.png" /><br>
+    <img alt="Tindev" src="./packages/web/src/assets/logo.png" /><br>
     <b>Tindev: A tinder clone for developers</b> 🔥
 </h1>
 
