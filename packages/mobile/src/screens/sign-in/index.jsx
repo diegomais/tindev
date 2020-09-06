@@ -18,7 +18,7 @@ export default function Login() {
 
   const handleSignIn = useCallback(
     (user) => {
-      signIn(user);
+      if (user.length > 0) signIn(user);
     },
     [signIn]
   );
@@ -41,7 +41,7 @@ export default function Login() {
       />
 
       <RectButton
-        enabled={!!username || isLoading}
+        enabled={!isLoading && !!username}
         onPress={() => handleSignIn(username)}
         style={styles.button}>
         {isLoading ? (
