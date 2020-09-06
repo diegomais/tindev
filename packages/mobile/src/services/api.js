@@ -1,7 +1,7 @@
 import axios from 'axios';
-import getEnvironmentVariables from '../../environment';
+import getEnvironment from '../../environment';
 
-const { apiUrl } = getEnvironmentVariables();
+const { apiUrl } = getEnvironment();
 
 const api = axios.create({ baseURL: apiUrl });
 
