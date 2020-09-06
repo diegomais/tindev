@@ -1,10 +1,10 @@
 import React from 'react';
 import * as Sentry from 'sentry-expo';
-import getEnvironmentVariables from './environment';
+import getEnvironment from './environment';
 import AppProvider from './src/contexts';
 import Routes from './src/routes';
 
-const { sentryDsn } = getEnvironmentVariables();
+const { sentryDsn } = getEnvironment();
 
 Sentry.init({ dsn: sentryDsn, enableInExpoDevelopment: true, debug: true });
 

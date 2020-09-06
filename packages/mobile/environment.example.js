@@ -4,22 +4,25 @@ const apiUrl = '';
 const sentryDsn = '';
 
 const ENV = {
-  dev: { apiUrl, sentryDsn },
-  staging: { apiUrl, sentryDsn },
-  prod: { apiUrl, sentryDsn },
+  dev: { envName: 'DEVELOPMENT', apiUrl, sentryDsn },
+  staging: { envName: 'STAGING', apiUrl, sentryDsn },
+  prod: { envName: 'PRODUCTION', apiUrl, sentryDsn },
 };
 
-const getEnvironmentVariables = (env = Constants.manifest.releaseChannel) => {
-  if (__DEV__) {
-    return ENV.dev;
-  }
-  if (env === 'staging') {
-    return ENV.staging;
-  }
-  if (env === 'prod') {
-    return ENV.prod;
-  }
-  return undefined;
-};
+export default function getEnvironment() {
+  const { releaseChannel } = Constants.manifest;
 
-export default getEnvironmentVariables;
+  if (releaseChannel === undefined) {
+    // no releaseChannel (is undefined) in dev
+    return ENV.dev; // dev env settings
+  }
+  if (releaseChannel.indexOf('prod') !== -1) {
+    // matches prod-v1, prod-v2, prod-v3
+    return ENV.prod; // prod env settings
+  }
+  if (releaseChannel.indexOf('staging') !== -1) {
+    // matches staging-v1, staging-v2
+    return ENV.staging; // stage env settings
+  }
+  return ENV.dev;
+}
