@@ -5,7 +5,9 @@ const Sentry = require('@sentry/node');
 const Tracing = require('@sentry/tracing');
 const routes = require('./routes');
 const PORT = process.env.PORT || 3333;
-const server = express();
+const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
@@ -20,22 +22,35 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
+const connectedUsers = {};
+io.on('connection', socket => {
+  const { user } = socket.handshake.query;
+  connectedUsers[user] = socket.id;
+});
+
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-server.use(cors());
-server.use(express.json());
+app.use(function onConnection(req, res, next) {
+  req.io = io;
+  req.connectedUsers = connectedUsers;
+  return next();
+});
 
-server.use(Sentry.Handlers.requestHandler());
-server.use(Sentry.Handlers.tracingHandler());
+app.use(cors());
+app.use(express.json());
 
-server.use(routes);
+app.use(Sentry.Handlers.requestHandler());
+app.use(Sentry.Handlers.tracingHandler());
 
-server.use(Sentry.Handlers.errorHandler());
-server.use(function onError(err, req, res, next) {
+app.use(routes);
+
+app.use(Sentry.Handlers.errorHandler());
+app.use(function onError(err, req, res, next) {
   res.statusCode = 500;
   res.end(res.sentry + '\n');
 });
+
 server.listen(PORT);

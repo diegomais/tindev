@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import io from 'socket.io-client';
+import getEnvironment from '../../../environment';
 import useAuth from '../../contexts/auth';
 import api from '../../services/api';
 import logo from '../../../assets/logo.png';
@@ -18,10 +20,18 @@ export default function Main() {
   const [devs, setDevs] = useState([]);
   const [matchDev, setMatchDev] = useState(false);
   const { user, signOut } = useAuth();
+  const { apiUrl } = getEnvironment();
 
   useEffect(() => {
     api.get('/devs', { headers: { user } }).then((response) => {
       setDevs(response.data);
+    });
+  }, [user]);
+
+  useEffect(() => {
+    const socket = io(apiUrl, { query: { user } });
+    socket.on('match', (dev) => {
+      setMatchDev(dev);
     });
   }, [user]);
 
@@ -90,7 +100,7 @@ export default function Main() {
           <Text style={styles.matchBio}>{matchDev.bio}</Text>
 
           <TouchableOpacity onPress={() => setMatchDev(false)}>
-            <Text style={styles.closeMatch}>Fechar</Text>
+            <Text style={styles.closeMatch}>Close</Text>
           </TouchableOpacity>
         </View>
       )}
