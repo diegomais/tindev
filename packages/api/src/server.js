@@ -11,16 +11,16 @@ const io = require('socket.io')(server);
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
-}
 
-Sentry.init({
-  dsn: process.env.SENTRY_DSN,
-  integrations: [
-    new Sentry.Integrations.Http({ tracing: true }),
-    new Tracing.Integrations.Express({ server }),
-  ],
-  tracesSampleRate: 1.0,
-});
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    integrations: [
+      new Sentry.Integrations.Http({ tracing: true }),
+      new Tracing.Integrations.Express({ server }),
+    ],
+    tracesSampleRate: 1.0,
+  });
+}
 
 const connectedUsers = {};
 io.on('connection', socket => {
