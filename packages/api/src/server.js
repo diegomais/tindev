@@ -1,3 +1,4 @@
+require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -10,8 +11,6 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
-
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
     integrations: [
