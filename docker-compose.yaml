@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: ./packages/api
+      dockerfile: Dockerfile
+    container_name: tindev-api
+    depends_on:
+      - mongo
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/tindev
+    ports:
+      - 3333:3333
+    restart: on-failure
+    volumes:
+      - ./packages/api/:/app/
+      - /app/node_modules/
+
+  web:
+    build:
+      context: ./packages/web
+      dockerfile: Dockerfile
+    container_name: tindev-web
+    environment:
+      REACT_APP_API_URL: http://localhost:3333
+    ports:
+      - 3000:3000
+    restart: on-failure
+    stdin_open: true
+    volumes:
+      - ./packages/web/:/app/
+      - /app/node_modules/
+
+  mongo:
+    container_name: tindev-mongo
+    image: mongo
+    ports:
+      - 27017:27017
+    restart: on-failure
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
