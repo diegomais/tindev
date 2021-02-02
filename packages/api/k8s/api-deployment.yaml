@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tindev-api
+  labels:
+    app: tindev-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tindev-api
+  template:
+    metadata:
+      labels:
+        app: tindev-api
+    spec:
+      containers:
+      - name: tindev-api
+        image: diegomais/tindev-api
+        env:
+          - name: PORT
+            value: "3333"
+          - name: MONGODB_URI
+            value: mongodb://mongo-svc:27017/tindev
+          - name: SENTRY_DSN
+            value: https://09246419482a45bcb48f17a1e2ba50af@o443937.ingest.sentry.io/5418346
+        ports:
+        - containerPort: 3333
