@@ -970,7 +970,7 @@ debug@^3.0, debug@^3.1.0, debug@^3.2.6:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.2, debug@^4.3.0, debug@~4.3.1:
+debug@^4.2, debug@^4.3.1, debug@~4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.1.tgz#f0d229c505e0c6d8c49ac553d1b13dc183f6b2ee"
   integrity sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
@@ -3161,10 +3161,10 @@ pm2-multimeter@^0.1.2:
   dependencies:
     charm "~0.1.1"
 
-pm2@^4.5.4:
-  version "4.5.4"
-  resolved "https://registry.yarnpkg.com/pm2/-/pm2-4.5.4.tgz#266748fe83337f36cda57a04eb239b710192987b"
-  integrity sha512-2xKXrKz21i1R3BK2XxVIPq5Iy9fKHBVgZ+KMfRrx72mc7bq84SG/D+iTO32ihLf2Qe+N1o8rDskAt4M30JWyiA==
+pm2@^4.5.5:
+  version "4.5.5"
+  resolved "https://registry.yarnpkg.com/pm2/-/pm2-4.5.5.tgz#f2f9f7f4fd1b9bd308b4680029ff460af2f5a671"
+  integrity sha512-feLYWAq8liDsM2IV0ViZ4TSnEUoOtpuICakzFnhh2bb51BUnpJMOjO1sojR1jDuNHvhrYGWqneOUglxE6slKwg==
   dependencies:
     "@pm2/agent" "~1.0.4"
     "@pm2/io" "~4.3.5"
@@ -3178,7 +3178,7 @@ pm2@^4.5.4:
     commander "2.15.1"
     cron "1.8.2"
     dayjs "~1.8.25"
-    debug "^4.3.0"
+    debug "^4.3.1"
     enquirer "2.3.6"
     eventemitter2 "5.0.1"
     fclone "1.0.11"
@@ -3196,8 +3196,6 @@ pm2@^4.5.4:
     sprintf-js "1.1.2"
     vizion "2.2.1"
     yamljs "0.3.0"
-  optionalDependencies:
-    systeminformation "^4.32"
 
 posix-character-classes@^0.1.0:
   version "0.1.1"
@@ -3551,7 +3549,7 @@ safe-buffer@5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
 
-safe-buffer@5.2.1, safe-buffer@^5.1.1:
+safe-buffer@5.2.1, safe-buffer@^5.1.1, safe-buffer@^5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
   integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
@@ -3560,11 +3558,6 @@ safe-buffer@^5.0.1, safe-buffer@^5.1.2:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.0.tgz#b74daec49b1148f88c64b68d49b1e815c1f2f519"
   integrity sha512-fZEwUGbVl7kouZs1jCdMLdt95hdIv0ZeHg6L7qPeciMZhZ+/gdesW4wgTARkrFWEpspjEATAzUGPG8N2jJiwbg==
-
-safe-buffer@^5.2.1:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
-  integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
 
 safe-regex@^1.1.0:
   version "1.1.0"
@@ -4020,11 +4013,6 @@ supports-color@^7.1.0:
   integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
   dependencies:
     has-flag "^4.0.0"
-
-systeminformation@^4.32:
-  version "4.34.14"
-  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-4.34.14.tgz#81ddcb3998a53554bb7156fef8f57ee071cd1a3c"
-  integrity sha512-cPkHQIBgCZrfvenIfbXv1ChCPoXwqCBF8il2ZnqTBsyZPBNBFm6zij4W3f6Y/J4agBD3n56DGLl6TwZ8tLFsyA==
 
 table@^5.2.3:
   version "5.4.6"
