@@ -8,8 +8,8 @@
     "dev": "nodemon src/server.js"
   },
   "dependencies": {
-    "@sentry/node": "^5.22.3",
-    "@sentry/tracing": "^5.30.0",
+    "@sentry/node": "^6.0.0",
+    "@sentry/tracing": "^6.0.0",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
