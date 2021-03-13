@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@sentry/node": "^5.22.3",
-    "@sentry/tracing": "^5.22.3",
+    "@sentry/tracing": "^5.30.0",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
