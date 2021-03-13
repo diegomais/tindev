@@ -10,7 +10,7 @@
   "dependencies": {
     "@react-native-community/async-storage": "~1.11.0",
     "@react-native-community/masked-view": "0.1.10",
-    "@react-navigation/native": "^5.7.3",
+    "@react-navigation/native": "^5.9.0",
     "@react-navigation/stack": "^5.13.0",
     "axios": "^0.21.1",
     "babel-plugin-inline-dotenv": "^1.6.0",
@@ -24,7 +24,7 @@
     "react-native-gesture-handler": "~1.6.0",
     "react-native-reanimated": "~1.9.0",
     "react-native-safe-area-context": "~3.1.9",
-    "react-native-screens": "~2.9.0",
+    "react-native-screens": "~2.16.1",
     "react-native-web": "~0.14.10",
     "sentry-expo": "^2.1.2",
     "socket.io-client": "^2.3.0"
