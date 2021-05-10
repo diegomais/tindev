@@ -15,7 +15,7 @@
     "axios": "^0.21.1",
     "babel-plugin-inline-dotenv": "^1.6.0",
     "expo": "~38.0.8",
-    "expo-constants": "~9.1.1",
+    "expo-constants": "~9.3.5",
     "expo-status-bar": "^1.0.2",
     "prop-types": "^15.7.2",
     "react": "~16.11.0",
