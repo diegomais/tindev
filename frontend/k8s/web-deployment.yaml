@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tindev-web
+  name: tindev-frontend
   labels:
-    app: tindev-web
+    app: tindev-frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tindev-web
+      app: tindev-frontend
   template:
     metadata:
       labels:
-        app: tindev-web
+        app: tindev-frontend
     spec:
       containers:
-      - name: tindev-web
-        image: diegomais/tindev-web
-        env:
-          - name: PORT
-            value: "3000"
-          - name: REACT_APP_API_URL
-            value: http://localhost:60403
-        ports:
-        - containerPort: 3000
+        - name: tindev-frontend
+          image: diegomais/tindev-frontend
+          env:
+            - name: PORT
+              value: '3000'
+            - name: NEXT_PUBLIC_API_URL
+              value: http://localhost:60403
+          ports:
+            - containerPort: 3000

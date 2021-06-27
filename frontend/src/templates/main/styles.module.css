@@ -1,11 +1,11 @@
-.main-container {
+.main {
   max-width: 980px;
   margin: 0 auto;
   padding: 50px;
   text-align: center;
 }
 
-.main-container ul {
+.main ul {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -13,17 +13,17 @@
   margin-top: 50px;
 }
 
-.main-container ul li {
+.main ul li {
   display: flex;
   flex-direction: column;
 }
 
-.main-container ul li img {
+.main ul li img {
   max-width: 100%;
   border-radius: 5px 5px 0 0;
 }
 
-.main-container ul li footer {
+.main ul li footer {
   flex: 1;
   background: #fff;
   border: 1px solid #eee;
@@ -32,26 +32,26 @@
   border-radius: 0 0 5px 5px;
 }
 
-.main-container ul li footer strong {
+.main ul li footer strong {
   font-size: 16px;
   color: #333;
 }
 
-.main-container ul li p {
+.main ul li p {
   font-size: 14px;
   color: #999;
   line-height: 20px;
   margin-top: 5px;
 }
 
-.main-container ul li .buttons {
+.buttons {
   margin-top: 10px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
 }
 
-.main-container ul li .buttons button {
+.buttons button {
   height: 50px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
   border: 0;
@@ -60,26 +60,26 @@
   cursor: pointer;
 }
 
-.main-container ul li .buttons button:hover img {
+.buttons button:hover img {
   transform: translateY(-5px);
   transition: all 0.2s;
 }
 
-.main-container .empty {
+.empty {
   margin-top: 300px;
   font-size: 32px;
   font-weight: bold;
   color: #999;
 }
 
-.main-container a {
+.main a {
   font-size: 14px;
   color: #333;
   text-decoration: none;
   line-height: 25px;
 }
 
-.match-container {
+.match {
   position: absolute;
   top: 0;
   left: 0;
@@ -92,7 +92,7 @@
   background: rgba(0, 0, 0, 0.8);
 }
 
-.match-container .avatar {
+.avatar {
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -100,12 +100,12 @@
   margin: 30px 0;
 }
 
-.match-container strong {
+.match strong {
   font-size: 32px;
   color: #fff;
 }
 
-.match-container p {
+.match p {
   margin-top: 10px;
   font-size: 20px;
   line-height: 30px;
@@ -113,7 +113,7 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-.match-container button {
+.match button {
   border: 0;
   background: none;
   font-weight: bold;
