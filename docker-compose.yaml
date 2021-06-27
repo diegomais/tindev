@@ -1,9 +1,9 @@
-version: "3.9"
+version: '3.8'
 
 services:
   api:
     build:
-      context: ./packages/api
+      context: ./backend
       dockerfile: Dockerfile
     container_name: tindev-api
     depends_on:
@@ -14,12 +14,12 @@ services:
       - 3333:3333
     restart: on-failure
     volumes:
-      - ./packages/api/:/app/
+      - ./backend/:/app/
       - /app/node_modules/
 
   web:
     build:
-      context: ./packages/web
+      context: ./frontend
       dockerfile: Dockerfile
     container_name: tindev-web
     environment:
@@ -29,7 +29,7 @@ services:
     restart: on-failure
     stdin_open: true
     volumes:
-      - ./packages/web/:/app/
+      - ./frontend/:/app/
       - /app/node_modules/
 
   mongo:

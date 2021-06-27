@@ -2,14 +2,14 @@ name: Frontend CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
-    - 'packages/web/**'
+    - 'frontend/**'
 
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
     paths:
-    - 'packages/web/**'
+    - 'frontend/**'
 
   workflow_dispatch:
 
@@ -21,7 +21,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: packages/web
+        working-directory: frontend
 
     strategy:
       matrix:

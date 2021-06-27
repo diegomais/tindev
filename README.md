@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="Tindev" src="packages/mobile/assets/logo.png" /><br>
+    <img alt="Tindev" src="mobile/assets/logo.png" /><br>
     <b>Tindev: A tinder clone for developers</b> 🔥
 </h1>
 
@@ -67,12 +67,12 @@ We recommend use [Docker](https://www.docker.com) to install and run the databas
 
 #### Adding environment variables
 
-1. Rename the file `.env.example` on `packages/api` directory to `.env`.
+1. Rename the file `.env.example` on `backend` directory to `.env`.
 2. Add the MongoDB URI (e.g. `mongodb://localhost:27017/tindev`) into `.env` file.
 
 #### Installing dependencies and running the server
 
-Run the instructions bellow inside `packages/api` directory:
+Run the instructions bellow inside `backend` directory:
 
 1. `npm install`
 2. `npm run dev`
@@ -88,12 +88,12 @@ Web application available at [https://diegomais-tindev.netlify.app](https://dieg
 
 #### Adding environment variables
 
-1. Rename the file `.env.example` on `packages/web` directory to `.env`.
+1. Rename the file `.env.example` on `frontend` directory to `.env`.
 2. Add the API URL (e.g. `http://localhost:3333`) into `.env` file.
 
 #### Installing dependencies and running the web application
 
-Run the instructions bellow inside `packages/web` directory:
+Run the instructions bellow inside `frontend` directory:
 
 1. `npm install`
 2. `npm start`
@@ -113,12 +113,12 @@ Follow the instructions for Expo CLI available in the official [React Native Doc
 
 #### Adding environment variables
 
-1. Rename the file `environment.example.js` on `packages/mobile` directory to `environment.js`.
+1. Rename the file `environment.example.js` on `mobile` directory to `environment.js`.
 2. Add the API URL (e.g. `http://localhost:3333`) into `.env` file.
 
 #### Installing dependencies and running the mobile application
 
-Run the instructions bellow inside `packages/mobile` directory:
+Run the instructions bellow inside `mobile` directory:
 
 1. `npm install`
 2. `expo start`
