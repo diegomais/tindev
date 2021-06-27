@@ -7,8 +7,10 @@ const Tracing = require('@sentry/tracing');
 const routes = require('./routes');
 const PORT = process.env.PORT || 3333;
 const app = express();
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, {
+  cors: { origin: '*', methods: ['GET', 'POST'] },
+});
 
 if (process.env.NODE_ENV !== 'production') {
   Sentry.init({

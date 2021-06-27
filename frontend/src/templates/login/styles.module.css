@@ -1,18 +1,18 @@
-.login-container {
+.login {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.login-container form {
+.login form {
   width: 100%;
   max-width: 300px;
   display: flex;
   flex-direction: column;
 }
 
-.login-container form input {
+.login form input {
   margin-top: 20px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -22,11 +22,11 @@
   color: #666;
 }
 
-.login-container form input::placeholder {
+.login form input::placeholder {
   color: #999;
 }
 
-.login-container form button {
+.login form button {
   margin-top: 10px;
   border: 0;
   border-radius: 4px;

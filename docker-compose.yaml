@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  api:
+  backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -12,22 +12,20 @@ services:
       MONGODB_URI: mongodb://mongo:27017/tindev
     ports:
       - 3333:3333
-    restart: on-failure
     volumes:
       - ./backend/:/app/
       - /app/node_modules/
 
-  web:
+  frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
-    container_name: tindev-web
+      target: deps
+    command: yarn dev
+    container_name: tindev-frontend
     environment:
-      REACT_APP_API_URL: http://localhost:3333
+      NEXT_PUBLIC_API_URL: http://localhost:3333
     ports:
       - 3000:3000
-    restart: on-failure
-    stdin_open: true
     volumes:
       - ./frontend/:/app/
       - /app/node_modules/
@@ -37,7 +35,6 @@ services:
     image: mongo
     ports:
       - 27017:27017
-    restart: on-failure
     volumes:
       - mongo_data:/data/db
 

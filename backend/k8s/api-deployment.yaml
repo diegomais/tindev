@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tindev-api
+  name: tindev-backend
   labels:
-    app: tindev-api
+    app: tindev-backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tindev-api
+      app: tindev-backend
   template:
     metadata:
       labels:
-        app: tindev-api
+        app: tindev-backend
     spec:
       containers:
-      - name: tindev-api
-        image: diegomais/tindev-api
+      - name: tindev-backend
+        image: diegomais/tindev-backend
         env:
           - name: PORT
             value: "3333"
