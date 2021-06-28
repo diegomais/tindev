@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     marginTop: 20,
     height: 46,
-    backgroundColor: '#FFF',
+    backgroundColor: '#fff',
     borderWidth: 1,
-    borderColor: '#DDD',
+    borderColor: '#ddd',
     borderRadius: 4,
     paddingHorizontal: 15,
   },
@@ -24,14 +24,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
     height: 46,
-    backgroundColor: '#DF4723',
+    backgroundColor: '#df4723',
     borderRadius: 4,
   },
   buttonText: {
-    color: '#FFF',
+    color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
   },
-});
+})
 
-export default styles;
+export default styles
