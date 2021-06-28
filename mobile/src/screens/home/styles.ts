@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   card: {
     borderWidth: 1,
-    borderColor: '#DDD',
+    borderColor: '#ddd',
     borderRadius: 8,
     margin: 30,
     overflow: 'hidden',
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   avatar: {
     flex: 1,
     height: 300,
-    backgroundColor: '#DDD',
+    backgroundColor: '#ddd',
   },
   footer: {
     backgroundColor: '#fff',
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: '#FFF',
+    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 20,
@@ -85,13 +85,13 @@ const styles = StyleSheet.create({
     height: 160,
     borderRadius: 80,
     borderWidth: 5,
-    borderColor: '#FFF',
+    borderColor: '#fff',
     marginVertical: 30,
   },
   matchName: {
     fontSize: 26,
     fontWeight: 'bold',
-    color: '#FFF',
+    color: '#fff',
   },
   matchBio: {
     marginTop: 10,
@@ -108,6 +108,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
     fontWeight: 'bold',
   },
-});
+})
 
-export default styles;
+export default styles
