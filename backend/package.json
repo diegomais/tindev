@@ -4,7 +4,7 @@
     "@sentry/tracing": "^6.0.0",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
-    "dotenv": "^8.6.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.8",
     "pm2": "^4.5.6",
