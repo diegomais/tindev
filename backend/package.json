@@ -16,15 +16,22 @@
     "eslint-config-prettier": "6.15.0",
     "eslint-plugin-import": "2.25.3",
     "eslint-plugin-prettier": "3.3.1",
+    "mocha": "^10.0.0",
     "nodemon": "2.0.15",
-    "prettier": "1.19.1"
+    "nyc": "^15.1.0",
+    "prettier": "1.19.1",
+    "sinon": "^14.0.0",
+    "supertest": "^6.2.4"
   },
   "license": "MIT",
   "main": "index.js",
   "name": "tindev",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "pm2-runtime start ecosystem.config.js --env production"
+    "start": "pm2-runtime start ecosystem.config.js --env production",
+    "test": "npx mocha -w --parallel src/**/*.test.js",
+    "test:ci": "npx mocha --parallel src/**/*.test.js",
+    "test:cov": "npx nyc npx mocha --parallel src/**/*.test.js"
   },
   "version": "1.0.0"
 }
