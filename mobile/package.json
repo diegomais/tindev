@@ -34,7 +34,7 @@
   "devDependencies": {
     "@babel/core": "7.17.8",
     "@types/react": "16.14.21",
-    "@types/react-native": "0.63.52",
+    "@types/react-native": "0.69.5",
     "@types/react-test-renderer": "^16.0.0",
     "jest": "^27.0.0",
     "jest-expo": "^46.0.1",
