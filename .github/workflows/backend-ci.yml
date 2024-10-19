@@ -2,32 +2,43 @@ name: Backend CI
 
 on:
   push:
-    branches: [main]
+    branches: ["main"]
     paths:
-      - 'backend/**'
+      - "backend/**"
+
   pull_request:
-    branches: [main]
-    types: [opened, synchronize, reopened]
+    branches: ["main"]
     paths:
-      - 'backend/**'
+      - "backend/**"
+
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     defaults:
       run:
         shell: bash
         working-directory: backend
 
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: lts/*
+          version: 9
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+          cache-dependency-path: "backend"
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
-      - name: Run tests
-        run: yarn test:ci
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm test:ci
