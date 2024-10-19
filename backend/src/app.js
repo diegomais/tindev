@@ -1,11 +1,13 @@
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
+const { createServer } = require('http');
+const { Server } = require('socket.io');
 const routes = require('./routes');
 
 const app = express();
-const server = require('http').createServer(app);
-const io = require('socket.io')(server, {
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
   cors: { origin: '*', methods: ['GET', 'POST'] },
 });
 
@@ -30,4 +32,4 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-module.exports = app;
+module.exports = httpServer;
