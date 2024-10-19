@@ -41,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Lint
-        run: npx eslint --format=stylish src
+        run: pnpm lint
       - name: Format
         run: npx prettier --check src
       - name: Build
