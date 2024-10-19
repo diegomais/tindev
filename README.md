@@ -42,10 +42,7 @@ These instructions will get you a copy of the full project up and running on you
 
 The project is developed using Git. Git is a free and open source distributed version control system. [Download Git](https://git-scm.com/downloads).
 
-The project can be built with npm or Yarn, so choose one of the approach bellow in case you don't have any installed on your system.
-
-- **npm** is distributed with Node.js which means that when you download Node.js, you automatically get npm installed on your computer. [Download Node.js](https://nodejs.org/en/download/).
-- **Yarn** is a package manager built by Facebook Team and seems to be faster than npm in general. [Download Yarn](https://yarnpkg.com/en/docs/install).
+The project is built with PNPm. PNPm is a fast, disk space efficient package manager. [Installation](https://pnpm.io/installation).
 
 ### Cloning the project
 
@@ -74,13 +71,8 @@ We recommend use [Docker](https://www.docker.com) to install and run the databas
 
 Run the instructions bellow inside `backend` directory:
 
-1. `npm install`
-2. `npm run dev`
-
-or
-
-1. `yarn install`
-2. `yarn dev`
+1. `pnpm install --frozen-lockfile`
+2. `pnpm dev`
 
 ### Web
 
@@ -95,13 +87,8 @@ Web application available at [https://diegomais-tindev.netlify.app](https://dieg
 
 Run the instructions bellow inside `frontend` directory:
 
-1. `npm install`
-2. `npm start`
-
-or
-
-1. `yarn install`
-2. `yarn start`
+1. `pnpm install --frozen-lockfile`
+2. `pnpm dev`
 
 ### Mobile
 

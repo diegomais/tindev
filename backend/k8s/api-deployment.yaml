@@ -15,14 +15,12 @@ spec:
         app: tindev-backend
     spec:
       containers:
-      - name: tindev-backend
-        image: diegomais/tindev-backend
-        env:
-          - name: PORT
-            value: "3333"
-          - name: MONGODB_URI
-            value: mongodb://mongo-svc:27017/tindev
-          - name: SENTRY_DSN
-            value: https://09246419482a45bcb48f17a1e2ba50af@o443937.ingest.sentry.io/5418346
-        ports:
-        - containerPort: 3333
+        - name: tindev-backend
+          image: diegomais/tindev-backend
+          env:
+            - name: PORT
+              value: '3333'
+            - name: MONGODB_URI
+              value: mongodb://mongo-svc:27017/tindev
+          ports:
+            - containerPort: 3333

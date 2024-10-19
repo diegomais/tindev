@@ -1,10 +1,11 @@
-version: '3.8'
+version: "3.8"
 
 services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
+      target: deps
+    command: pnpm dev
     container_name: tindev-api
     depends_on:
       - mongo
@@ -20,7 +21,7 @@ services:
     build:
       context: ./frontend
       target: deps
-    command: yarn dev
+    command: pnpm dev
     container_name: tindev-frontend
     environment:
       NEXT_PUBLIC_API_URL: http://localhost:3333
