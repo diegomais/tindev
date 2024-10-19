@@ -56,14 +56,12 @@ export default function Main({ userId }: MainProps) {
   return (
     <div className={styles.main}>
       <Link href="/">
-        <a>
-          <Image
-            src="/images/logo.svg"
-            alt="TinDev Logo"
-            width="97px"
-            height="34px"
-          />
-        </a>
+        <Image
+          src="/images/logo.svg"
+          alt="TinDev Logo"
+          width={97}
+          height={34}
+        />
       </Link>
       {users.length > 0 ? (
         <ul>
@@ -72,8 +70,8 @@ export default function Main({ userId }: MainProps) {
               <Image
                 src={user.avatar}
                 alt={user.name}
-                width="200px"
-                height="200px"
+                width={200}
+                height={200}
               />
               <footer>
                 <strong>{user.name}</strong>
@@ -84,16 +82,16 @@ export default function Main({ userId }: MainProps) {
                   <Image
                     src="/images/dislike.svg"
                     alt="Dislike"
-                    width="20px"
-                    height="20px"
+                    width={20}
+                    height={20}
                   />
                 </button>
                 <button type="button" onClick={() => handleLike(user._id)}>
                   <Image
                     src="/images/like.svg"
                     alt="Like"
-                    width="24px"
-                    height="20px"
+                    width={24}
+                    height={20}
                   />
                 </button>
               </div>
@@ -109,16 +107,16 @@ export default function Main({ userId }: MainProps) {
           <Image
             src="/images/its-a-match.png"
             alt="It's a Match"
-            width="331px"
-            height="80px"
+            width={331}
+            height={80}
           />
 
           <Image
             className={styles.avatar}
             src={matchDev.avatar}
             alt="Avatar"
-            width="200px"
-            height="200px"
+            width={200}
+            height={200}
           />
           <strong>{matchDev.name}</strong>
           <p>{matchDev.bio}</p>
