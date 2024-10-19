@@ -33,7 +33,7 @@ export default function Main({ userId }: MainProps) {
   useEffect(() => {
     const socket = io(
       process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3333',
-      { query: { user: userId } }
+      { query: { user: userId } },
     )
 
     socket.on('match', (dev: DevType) => {
