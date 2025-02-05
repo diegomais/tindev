@@ -12,6 +12,10 @@
   flex-direction: column;
 }
 
+.login form img {
+  align-self: center;
+}
+
 .login form input {
   margin-top: 20px;
   border: 1px solid #ddd;
