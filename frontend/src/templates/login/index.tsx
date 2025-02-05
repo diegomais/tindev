@@ -22,8 +22,8 @@ export default function LoginTemplate() {
         <Image
           src="/images/logo.svg"
           alt="TinDev Logo"
-          width="97px"
-          height="34px"
+          width={97}
+          height={34}
         />
         <input
           placeholder="Enter your GitHub username"
