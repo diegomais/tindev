@@ -16,6 +16,7 @@
 .main ul li {
   display: flex;
   flex-direction: column;
+  max-width: 200px;
 }
 
 .main ul li img {
