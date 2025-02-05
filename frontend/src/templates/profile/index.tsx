@@ -1,24 +1,27 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import io from 'socket.io-client'
-import api from '../../services/api'
+
+import api from '@/services/api'
 import styles from './styles.module.css'
 
-type MainProps = {
+interface Props {
   userId: string
 }
 
-type DevType = {
+interface Dev {
   _id: string
   avatar: string
   bio: string
   name: string
 }
 
-export default function Main({ userId }: MainProps) {
-  const [users, setUsers] = useState<Array<DevType>>([])
-  const [matchDev, setMatchDev] = useState<DevType | null>(null)
+export default function ProfileTemplate({ userId }: Props) {
+  const [users, setUsers] = useState<Array<Dev>>([])
+  const [matchDev, setMatchDev] = useState<Dev | null>(null)
 
   useEffect(() => {
     async function loadUsers() {
@@ -36,7 +39,7 @@ export default function Main({ userId }: MainProps) {
       { query: { user: userId } }
     )
 
-    socket.on('match', (dev: DevType) => {
+    socket.on('match', (dev: Dev) => {
       setMatchDev(dev)
     })
   }, [userId])
