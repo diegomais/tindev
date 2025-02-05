@@ -6,7 +6,7 @@ services:
       context: ./backend
       target: deps
     command: pnpm dev
-    container_name: tindev-api
+    container_name: tindev-backend
     depends_on:
       - mongo
     environment:
@@ -23,6 +23,8 @@ services:
       target: deps
     command: pnpm dev
     container_name: tindev-frontend
+    depends_on:
+      - backend
     environment:
       NEXT_PUBLIC_API_URL: http://localhost:3333
     ports:
