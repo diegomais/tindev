@@ -100,20 +100,14 @@ Follow the instructions for Expo CLI available in the official [React Native Doc
 
 #### Adding environment variables
 
-1. Rename the file `environment.example.js` on `mobile` directory to `environment.js`.
-2. Add the API URL (e.g. `http://localhost:3333`) into `.env` file.
+Rename the file `.env.local.example` on `mobile` directory to `.env.local`.
 
 #### Installing dependencies and running the mobile application
 
 Run the instructions bellow inside `mobile` directory:
 
-1. `npm install`
-2. `expo start`
-
-or
-
-1. `yarn install`
-2. `expo start`
+1. `pnpm install --frozen-lockfile`
+2. `pnpm start`
 
 ## :thinking: How to contribute
 

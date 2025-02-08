@@ -1,65 +1,68 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
-import io from 'socket.io-client'
-import getEnvironment from '../../config/environment'
-import useAuth from '../../contexts/auth'
-import api from '../../services/api'
-import s from './styles'
+import React, { useCallback, useEffect, useState } from "react";
+import {
+  Image,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-type DevType = {
-  _id: string
-  avatar: string
-  bio: string
-  name: string
+import useAuth from "@/contexts/auth";
+import { api } from "@/services/api";
+import { getSocketInstance } from "@/services/socket";
+import { styles as s } from "./styles";
+
+interface DevType {
+  _id: string;
+  avatar: string;
+  bio: string;
+  name: string;
 }
 
-const { apiUrl } = getEnvironment()
-
-const Main = () => {
-  const { userId, signOut } = useAuth()
-  const [devs, setDevs] = useState<DevType[]>([])
-  const [matchDev, setMatchDev] = useState<DevType | null>(null)
+const MainScreen = () => {
+  const { userId, signOut } = useAuth();
+  const [devs, setDevs] = useState<DevType[]>([]);
+  const [matchDev, setMatchDev] = useState<DevType | null>(null);
 
   useEffect(() => {
-    api.get('/devs', { headers: { user: userId } }).then(({ data }) => {
-      setDevs(data)
-    })
-  }, [userId])
+    api.get("/devs", { headers: { user: userId } }).then(({ data }) => {
+      setDevs(data);
+    });
+  }, [userId]);
 
   useEffect(() => {
     if (userId) {
-      const socket = io(apiUrl, { query: { user: userId } })
-
-      socket.on('match', (dev) => {
-        setMatchDev(dev)
-      })
+      const socket = getSocketInstance(userId);
+      socket.on("match", (dev) => {
+        setMatchDev(dev);
+      });
     }
-  }, [userId])
+  }, [userId]);
 
   const handleLike = useCallback(async () => {
-    const [username, ...rest] = devs
+    const [username, ...rest] = devs;
     if (username) {
       await api.post(`/devs/${username._id}/likes`, null, {
         headers: { user: userId },
-      })
-      setDevs(rest)
+      });
+      setDevs(rest);
     }
-  }, [userId])
+  }, [userId]);
 
   const handleDislike = useCallback(async () => {
-    const [username, ...rest] = devs
+    const [username, ...rest] = devs;
     if (username) {
       await api.post(`/devs/${username._id}/dislikes`, null, {
         headers: { user: userId },
-      })
-      setDevs(rest)
+      });
+      setDevs(rest);
     }
-  }, [userId])
+  }, [userId]);
 
   return (
     <SafeAreaView style={s.container}>
       <TouchableOpacity onPress={signOut}>
-        <Image style={s.logo} source={require('../../../assets/logo.png')} />
+        <Image style={s.logo} source={require("@/assets/images/logo.png")} />
       </TouchableOpacity>
 
       <View style={s.cardsContainer}>
@@ -79,18 +82,18 @@ const Main = () => {
 
       <View style={s.buttonsContainer}>
         <TouchableOpacity style={s.button} onPress={handleDislike}>
-          <Image source={require('../../../assets/dislike.png')} />
+          <Image source={require("@/assets/images/dislike.png")} />
         </TouchableOpacity>
         <TouchableOpacity style={s.button} onPress={handleLike}>
-          <Image source={require('../../../assets/like.png')} />
+          <Image source={require("@/assets/images/like.png")} />
         </TouchableOpacity>
       </View>
 
       {matchDev && (
-        <View style={s.matchContainer}>
+        <View style={[s.matchContainer, { zIndex: devs.length + 1 }]}>
           <Image
             style={s.matchImage}
-            source={require('../../../assets/its-a-match.png')}
+            source={require("@/assets/images/its-a-match.png")}
           />
           <Image style={s.matchAvatar} source={{ uri: matchDev.avatar }} />
 
@@ -103,7 +106,7 @@ const Main = () => {
         </View>
       )}
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default Main
+export default MainScreen;
