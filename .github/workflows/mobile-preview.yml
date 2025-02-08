@@ -1,7 +1,7 @@
-name: Publish mobile app on push to main
+name: Publish mobile preview from PR
 
 on:
-  push:
+  pull_request:
     branches:
       - main
     paths:
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish:
+  preview:
     runs-on: ubuntu-latest
 
     defaults:
@@ -68,5 +68,12 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Run tests
         run: ${{ steps.detect-package-manager.outputs.runner }} jest --ci --passWithNoTests
-      - name: Publish app
-        run: eas update --auto --non-interactive
+      - name: Create preview
+        uses: expo/expo-github-action/preview@v8
+        with:
+          command: eas update --auto
+          working-directory: mobile
+      - name: Comment preview
+        uses: expo/expo-github-action/preview-comment@v7
+        with:
+          channel: pr-${{ github.event.number }}
