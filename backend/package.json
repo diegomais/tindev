@@ -15,7 +15,7 @@
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-prettier": "3.4.1",
     "mocha": "^10.0.0",
-    "nodemon": "2.0.15",
+    "nodemon": "2.0.22",
     "nyc": "^15.1.0",
     "prettier": "1.19.1",
     "sinon": "^14.0.0",
