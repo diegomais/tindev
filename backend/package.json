@@ -1,4 +1,8 @@
 {
+  "name": "tindev",
+  "license": "MIT",
+  "version": "1.0.0",
+  "main": "src/server.js",
   "dependencies": {
     "axios": "^0.29.0",
     "cors": "^2.8.5",
@@ -20,15 +24,11 @@
     "sinon": "^14.0.0",
     "supertest": "^6.2.4"
   },
-  "license": "MIT",
-  "main": "index.js",
-  "name": "tindev",
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "test": "npx mocha -w --parallel src/**/*.test.js",
     "test:ci": "npx mocha --parallel src/**/*.test.js",
     "test:cov": "npx nyc npx mocha --parallel src/**/*.test.js"
-  },
-  "version": "1.0.0"
+  }
 }
