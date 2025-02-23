@@ -1,1 +1,10 @@
-node_modules/
+# dependencies
+/node_modules
+/.pnpm-store
+
+# version control
+.git
+.gitignore
+
+# misc
+*.md
