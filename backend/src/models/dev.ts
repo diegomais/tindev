@@ -1,6 +1,17 @@
-const { Schema, model } = require('mongoose');
+import { type Document, Schema, model } from 'mongoose'
 
-const DevSchema = new Schema(
+interface Dev extends Document {
+  name: string
+  user: string
+  avatar: string
+  bio?: string
+  likes: Schema.Types.ObjectId[]
+  dislikes: Schema.Types.ObjectId[]
+  createdAt: Date
+  updatedAt: Date
+}
+
+const devSchema = new Schema(
   {
     name: {
       type: String,
@@ -29,6 +40,6 @@ const DevSchema = new Schema(
     ],
   },
   { timestamps: true }
-);
+)
 
-module.exports = model('Dev', DevSchema);
+export default model<Dev>('Dev', devSchema)
