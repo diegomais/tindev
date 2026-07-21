@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "mobile/**"
+      - "apps/mobile/**"
 
   workflow_dispatch:
 
@@ -16,7 +16,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: mobile
+        working-directory: apps/mobile
 
     strategy:
       matrix:
@@ -28,17 +28,17 @@ jobs:
       - name: Detect package manager
         id: detect-package-manager
         run: |
-          if [ -f "${{ github.workspace }}/mobile/yarn.lock" ]; then
+          if [ -f "${{ github.workspace }}/apps/mobile/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             echo "runner=yarn" >> $GITHUB_OUTPUT
             exit 0
-          elif [ -f "${{ github.workspace }}/mobile/pnpm-lock.yaml" ]; then
+          elif [ -f "${{ github.workspace }}/apps/mobile/pnpm-lock.yaml" ]; then
             echo "manager=pnpm" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             echo "runner=pnpm" >> $GITHUB_OUTPUT
             exit 0
-          elif [ -f "${{ github.workspace }}/mobile/package.json" ]; then
+          elif [ -f "${{ github.workspace }}/apps/mobile/package.json" ]; then
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
             echo "runner=npx --no-install" >> $GITHUB_OUTPUT
@@ -57,7 +57,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-          cache-dependency-path: "mobile"
+          cache-dependency-path: "apps/mobile"
       - name: Set up Expo EAS
         uses: expo/expo-github-action@v8
         with:
@@ -73,7 +73,7 @@ jobs:
         uses: expo/expo-github-action/preview@v8
         with:
           command: eas update --auto
-          working-directory: mobile
+          working-directory: apps/mobile
       - name: Comment preview
         uses: expo/expo-github-action/preview-comment@v7
         with:

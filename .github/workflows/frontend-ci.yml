@@ -4,12 +4,12 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "frontend/**"
+      - "apps/frontend/**"
 
   pull_request:
     branches: ["main"]
     paths:
-      - "frontend/**"
+      - "apps/frontend/**"
 
   workflow_dispatch:
 
@@ -20,7 +20,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: frontend
+        working-directory: apps/frontend
 
     strategy:
       matrix:
@@ -32,17 +32,17 @@ jobs:
       - name: Detect package manager
         id: detect-package-manager
         run: |
-          if [ -f "${{ github.workspace }}/frontend/yarn.lock" ]; then
+          if [ -f "${{ github.workspace }}/apps/frontend/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             echo "runner=yarn" >> $GITHUB_OUTPUT
             exit 0
-          elif [ -f "${{ github.workspace }}/frontend/pnpm-lock.yaml" ]; then
+          elif [ -f "${{ github.workspace }}/apps/frontend/pnpm-lock.yaml" ]; then
             echo "manager=pnpm" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             echo "runner=pnpm" >> $GITHUB_OUTPUT
             exit 0
-          elif [ -f "${{ github.workspace }}/frontend/package.json" ]; then
+          elif [ -f "${{ github.workspace }}/apps/frontend/package.json" ]; then
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
             echo "runner=npx --no-install" >> $GITHUB_OUTPUT
@@ -61,7 +61,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-          cache-dependency-path: "frontend"
+          cache-dependency-path: "apps/frontend"
       - name: Restore cache
         uses: actions/cache@v4
         with:

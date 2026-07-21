@@ -1,7 +1,7 @@
 services:
   backend:
     build:
-      context: ./backend
+      context: ./apps/backend
       target: deps
     command: pnpm dev
     container_name: tindev-backend
@@ -12,12 +12,12 @@ services:
     ports:
       - 3333:3333
     volumes:
-      - ./backend/:/app/
+      - ./apps/backend/:/app/
       - /app/node_modules/
 
   frontend:
     build:
-      context: ./frontend
+      context: ./apps/frontend
       target: deps
     command: pnpm dev
     container_name: tindev-frontend
@@ -28,7 +28,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./frontend/:/app/
+      - ./apps/frontend/:/app/
       - /app/node_modules/
 
   mongo:
