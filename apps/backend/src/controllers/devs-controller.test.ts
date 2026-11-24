@@ -56,15 +56,13 @@ describe('DevController', () => {
     .resolves(user2Entity)
 
   const githubGet = sinon.stub(axios, 'get')
-  githubGet
-    .withArgs('https://api.github.com/users/diego3g')
-    .resolves({
-      data: {
-        name: user2Entity.name,
-        bio: user2Entity.bio,
-        avatar_url: user2Entity.avatar,
-      },
-    } as never)
+  githubGet.withArgs('https://api.github.com/users/diego3g').resolves({
+    data: {
+      name: user2Entity.name,
+      bio: user2Entity.bio,
+      avatar_url: user2Entity.avatar,
+    },
+  } as never)
 
   const devFindById = sinon.stub(Dev, 'findById')
   devFindById.withArgs(user1Entity._id).resolves({ likes: [], dislikes: [] })
