@@ -1,4 +1,4 @@
-### Commands to run in root directory
+### Commands to run from apps/backend
 
 # Log in to Docker registry
 docker login

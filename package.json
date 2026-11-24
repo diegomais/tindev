@@ -1,0 +1,7 @@
+{
+  "name": "tindev",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ]
+}

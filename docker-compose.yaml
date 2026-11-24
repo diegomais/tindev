@@ -1,10 +1,12 @@
 services:
   backend:
     build:
-      context: ./backend
+      context: .
+      dockerfile: apps/backend/Dockerfile
       target: deps
     command: pnpm dev
     container_name: tindev-backend
+    working_dir: /app/apps/backend
     depends_on:
       - mongo
     environment:
@@ -12,15 +14,17 @@ services:
     ports:
       - 3333:3333
     volumes:
-      - ./backend/:/app/
-      - /app/node_modules/
+      - ./apps/backend/:/app/apps/backend/
+      - /app/apps/backend/node_modules/
 
   frontend:
     build:
-      context: ./frontend
+      context: .
+      dockerfile: apps/frontend/Dockerfile
       target: deps
     command: pnpm dev
     container_name: tindev-frontend
+    working_dir: /app/apps/frontend
     depends_on:
       - backend
     environment:
@@ -28,8 +32,8 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./frontend/:/app/
-      - /app/node_modules/
+      - ./apps/frontend/:/app/apps/frontend/
+      - /app/apps/frontend/node_modules/
 
   mongo:
     container_name: tindev-mongo
