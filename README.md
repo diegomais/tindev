@@ -21,7 +21,7 @@
 
 This project was developed with the following technologies:
 
-- [Node.js](https://nodejs.org)
+- [Node.js](https://nodejs.org) v24 (see `.nvmrc`)
 - [React](https://reactjs.org)
 
 Extras:
