@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="Tindev" src="mobile/src/assets/images/logo.png" /><br>
+    <img alt="Tindev" src="apps/mobile/src/assets/images/logo.png" /><br>
     <b>Tindev: A tinder clone for developers</b> 🔥
 </h1>
 
@@ -21,7 +21,7 @@
 
 This project was developed with the following technologies:
 
-- [Node.js](https://nodejs.org)
+- [Node.js](https://nodejs.org) v24 (see `.nvmrc`)
 - [React](https://reactjs.org)
 
 Extras:
@@ -64,15 +64,12 @@ We recommend use [Docker](https://www.docker.com) to install and run the databas
 
 #### Adding environment variables
 
-1. Rename the file `.env.example` on `backend` directory to `.env`.
+1. Rename the file `.env.example` on `apps/backend` directory to `.env`.
 2. Add the MongoDB URI (e.g. `mongodb://localhost:27017/tindev`) into `.env` file.
 
 #### Installing dependencies and running the server
 
-Run the instructions bellow inside `backend` directory:
-
-1. `pnpm install --frozen-lockfile`
-2. `pnpm dev`
+From the repository root, install dependencies once with `pnpm install --frozen-lockfile`. Then run the server from `apps/backend` with `pnpm dev`.
 
 ### Web
 
@@ -80,15 +77,12 @@ Web application available at [https://diegomais-tindev.netlify.app](https://dieg
 
 #### Adding environment variables
 
-1. Rename the file `.env.example` on `frontend` directory to `.env`.
+1. Rename the file `.env.example` on `apps/frontend` directory to `.env`.
 2. Add the API URL (e.g. `http://localhost:3333`) into `.env` file.
 
 #### Installing dependencies and running the web application
 
-Run the instructions bellow inside `frontend` directory:
-
-1. `pnpm install --frozen-lockfile`
-2. `pnpm dev`
+After installing dependencies from the repository root, run the web app from `apps/frontend` with `pnpm dev`.
 
 ### Mobile
 
@@ -100,14 +94,11 @@ Follow the instructions for Expo CLI available in the official [React Native Doc
 
 #### Adding environment variables
 
-Rename the file `.env.local.example` on `mobile` directory to `.env.local`.
+Rename the file `.env.local.example` on `apps/mobile` directory to `.env.local`.
 
 #### Installing dependencies and running the mobile application
 
-Run the instructions bellow inside `mobile` directory:
-
-1. `pnpm install --frozen-lockfile`
-2. `pnpm start`
+After installing dependencies from the repository root, run the mobile app from `apps/mobile` with `pnpm start`.
 
 ## :thinking: How to contribute
 
