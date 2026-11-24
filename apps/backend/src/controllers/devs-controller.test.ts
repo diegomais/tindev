@@ -1,3 +1,4 @@
+import axios from 'axios'
 import assert from 'node:assert/strict'
 import sinon, { type SinonMatcher } from 'sinon'
 import request from 'supertest'
@@ -54,6 +55,17 @@ describe('DevController', () => {
     })
     .resolves(user2Entity)
 
+  const githubGet = sinon.stub(axios, 'get')
+  githubGet
+    .withArgs('https://api.github.com/users/diego3g')
+    .resolves({
+      data: {
+        name: user2Entity.name,
+        bio: user2Entity.bio,
+        avatar_url: user2Entity.avatar,
+      },
+    } as never)
+
   const devFindById = sinon.stub(Dev, 'findById')
   devFindById.withArgs(user1Entity._id).resolves({ likes: [], dislikes: [] })
 
@@ -100,6 +112,12 @@ describe('DevController', () => {
           .send({ username: user2Entity.user })
           .expect(200)
         assert.deepStrictEqual(response.body, user2Entity)
+        assert.equal(
+          githubGet.calledOnceWithExactly(
+            'https://api.github.com/users/diego3g'
+          ),
+          true
+        )
       })
     })
   })
